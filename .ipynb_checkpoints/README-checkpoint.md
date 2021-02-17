@@ -4,11 +4,11 @@
 
 ## Background
 
-Our new startup has created its own Ethereum-compatible blockchain to help connect financial institutions, and the team wants to build smart contracts to automate some company finances to make everyone's lives easier, increase transparency, and to make accounting and auditing practically automatic!
+Your new startup has created its own Ethereum-compatible blockchain to help connect financial institutions, and the team wants to build smart contracts to automate some company finances to make everyone's lives easier, increase transparency, and to make accounting and auditing practically automatic!
 
-Fortunately, we've been learning how to program smart contracts with Solidity! What we will be doing this assignment is creating a few `ProfitSplitter` contracts. These contracts will do several things:
+Fortunately, you've been learning how to program smart contracts with Solidity! What you will be doing this assignment is creating a few `ProfitSplitter` contracts. These contracts will do several things:
 
-* Pay our Associate-level employees quickly and easily.
+* Pay your Associate-level employees quickly and easily.
 
 * Distribute profits to different tiers of employees.
 
@@ -24,7 +24,7 @@ Fortunately, we've been learning how to program smart contracts with Solidity! W
 
 ## Instructions
 
-This assignment has 3 levels of difficulty, with each contract increasing in complexity and capability. We started  with Level 1, then moved forward as we complete the challenges. 
+This assignment has 3 levels of difficulty, with each contract increasing in complexity and capability. Start with Level 1, then move forward as you complete the challenges. You can build all three with the skills you already have!
 
 * **Level One** is an `AssociateProfitSplitter` contract. This will accept Ether into the contract and divide the Ether evenly among the associate level employees. This will allow the Human Resources department to pay employees quickly and efficiently.
 
@@ -32,15 +32,15 @@ This assignment has 3 levels of difficulty, with each contract increasing in com
 
 * **Level Three** is a `DeferredEquityPlan` that models traditional company stock plans. This contract will automatically manage 1000 shares with an annual distribution of 250 over 4 years for a single employee.
 
-### Starting the project
+### Starting your project
 
 Navigate to the [Remix IDE](https://remix.ethereum.org) and create a new contract called `AssociateProfitSplitter.sol` using the starter code for level one above.
 
-While developing and testing the contract, use the [Ganache](https://www.trufflesuite.com/ganache) development chain, and point MetaMask to `localhost:8545`, or replace the port with what you have set in your workspace.
+While developing and testing your contract, use the [Ganache](https://www.trufflesuite.com/ganache) development chain, and point MetaMask to `localhost:8545`, or replace the port with what you have set in your workspace.
 
 ### Level One: The `AssociateProfitSplitter` Contract
 
-At the top of the contract, define the following `public` variables:
+At the top of your contract, you will need to define the following `public` variables:
 
 * `employee_one` -- The `address` of the first employee. Make sure to set this to `payable`.
 
@@ -56,7 +56,7 @@ Create a constructor function that accepts:
 
 * `address payable _three`
 
-Within the constructor, set the employee addresses to equal the parameter values. This this way we don't have to hardcode the employee addresses.
+Within the constructor, set the employee addresses to equal the parameter values. This will allow you to avoid hardcoding the employee addresses.
 
 Next, create the following functions:
 
@@ -82,7 +82,7 @@ Next, create the following functions:
 
 In the `Deploy` tab in Remix, deploy the contract to your local Ganache chain by connecting to `Injected Web3` and ensuring MetaMask is pointed to `localhost:8545`.
 
-Fill in the constructor parameters with your designated `employee` addresses.
+You will need to fill in the constructor parameters with your designated `employee` addresses.
 
 Test the `deposit` function by sending various values. Keep an eye on the `employee` balances as you send different amounts of Ether to the contract and ensure the logic is executing properly.
 
