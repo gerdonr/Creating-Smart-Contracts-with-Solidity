@@ -1,0 +1,93 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pragma solidity ^0.5.0;\n",
+    "\n",
+    "// lvl 3: equity plan\n",
+    "contract DeferredEquityPlan {\n",
+    "    address human_resources; // this is our msg.sender\n",
+    "    \n",
+    "    address payable employee = 0x11C2CD28084dc9bEe0e21107d5ed16fdEdeb9962; // bob\n",
+    "    bool active = true; // this employee is active at the start of the contract\n",
+    "\n",
+    "    // Set the total shares and annual distribution\n",
+    "    uint total_shares = 1000;\n",
+    "    uint annual_distribution = 250;\n",
+    "    \n",
+    "    // permanently store the time this contract was initialized\n",
+    "    uint fakenow = now;\n",
+    "    uint start_time = fakenow; \n",
+    "    \n",
+    "    // Set the `unlock_time` to be 365 days from now\n",
+    "    uint unlock_time = fakenow + 365 days; \n",
+    "\n",
+    "    uint public distributed_shares; // starts at 0\n",
+    "\n",
+    "    constructor(address payable _employee) public {\n",
+    "        human_resources = msg.sender;\n",
+    "        employee = _employee;\n",
+    "    }\n",
+    "\n",
+    "    function distribute() public {\n",
+    "        require(msg.sender == human_resources || msg.sender == employee, \"You are not authorized to execute this contract.\");\n",
+    "        require(active == true, \"Contract not active.\");\n",
+    "        require(unlock_time <= fakenow, \"Error, invalid time selected\"); \n",
+    "        require(distributed_shares < total_shares, \"Error, You don't have enough shares. Please try again.\"); \n",
+    "        \n",
+    "        // Add 365 days to the `unlock_time`\n",
+    "        unlock_time += 365 days; \n",
+    "        \n",
+    "        // Calculate the shares distributed\n",
+    "        distributed_shares = (fakenow - start_time) / 365 days * annual_distribution; \n",
+    "\n",
+    "        // double check in case the employee does not cash out until after 5+ years\n",
+    "        if (distributed_shares > 1000) {\n",
+    "            distributed_shares = 1000;\n",
+    "        }\n",
+    "    }\n",
+    "\n",
+    "    // human_resources and the employee can deactivate this contract at-will\n",
+    "    function deactivate() public {\n",
+    "        require(msg.sender == human_resources || msg.sender == employee, \"You are not authorized to deactivate this contract.\");\n",
+    "        active = false;\n",
+    "    }\n",
+    "\n",
+    "    // Since we do not need to handle Ether in this contract, revert any Ether sent to the contract directly\n",
+    "    function() external payable {\n",
+    "        revert(\"Do not send Ether to this contract!\");\n",
+    "    }\n",
+    "    \n",
+    "    function fastforward() public {\n",
+    "        fakenow += 100 days;\n",
+    "    }\n",
+    "}"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
