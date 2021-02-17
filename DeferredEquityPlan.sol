@@ -12,7 +12,7 @@
     "contract DeferredEquityPlan {\n",
     "    address human_resources; // this is our msg.sender\n",
     "    \n",
-    "    address payable employee = 0x11C2CD28084dc9bEe0e21107d5ed16fdEdeb9962; // bob\n",
+    "    address payable employee; // bob\n",
     "    bool active = true; // this employee is active at the start of the contract\n",
     "\n",
     "    // Set the total shares and annual distribution\n",

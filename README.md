@@ -90,7 +90,7 @@ Test the `deposit` function by sending various values. Keep an eye on the `emplo
 
 ### Level Two: The `TieredProfitSplitter` Contract
 
-In this contract, rather than splitting the profits between Associate-level employees, you will calculate rudimentary percentages for different tiers of employees (CEO, CTO, and Bob).
+In this contract, rather than splitting the profits between Associate-level employees, calculate rudimentary percentages for different tiers of employees (CEO, CTO, and Bob).
 
 Using the starter code, within the `deposit` function, perform the following:
 
@@ -122,7 +122,7 @@ Using the starter code, within the `deposit` function, perform the following:
 
 * Deploy and test the contract functionality by depositing various Ether values (greater than 100 wei).
 
-  * The provided `balance` function can be used as a test to see if the logic you have in the `deposit` function is valid. Since all of the Ether should be transferred to employees, this function should always return `0`, since the contract should never store Ether itself.
+  * The provided `balance` function can be used as a test to see if the logic in the `deposit` function is valid. Since all of the Ether should be transferred to employees, this function should always return `0`, since the contract should never store Ether itself.
 
   * Note: The 100 wei threshold is due to the way we calculate the points. If we send less than 100 wei, for example, 80 wei, `points` would equal `0` because `80 / 100` equals `0` because the remainder is discarded. We will learn more advanced arbitrary precision division later in the course. In this case, we can disregard the threshold as 100 wei is a significantly smaller value than the Ether or Gwei units that are far more commonly used in the real world (most people aren't sending less than a penny's worth of Ether).
 
